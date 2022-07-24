@@ -9,7 +9,6 @@ def load_x(x_signals_paths):
 
     for signal_type_path in x_signals_paths:
         file = open(signal_type_path, 'r')
-        # Read dataset from disk, dealing with text files' syntax
         x_signals.append(
             [np.array(serie, dtype=np.float32) for serie in [
                 row.replace('  ', ' ').strip().split(' ') for row in file
@@ -22,7 +21,6 @@ def load_x(x_signals_paths):
 
 def load_y(y_path):
     file = open(y_path, 'r')
-    # Read dataset from disk, dealing with text file's syntax
     y_ = np.array(
         [elem for elem in [
             row.replace('  ', ' ').strip().split(' ') for row in file
@@ -31,7 +29,6 @@ def load_y(y_path):
     )
     file.close()
 
-    # Subtract 1 to each output class for friendly 0-based indexing
     return y_ - 1
 
 
